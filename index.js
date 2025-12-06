@@ -17,6 +17,10 @@ const s3 = new S3Client({
   },
 });
 
+app.get('/',(_,res) => {
+  return res.json({message:'AWS api is on live'})
+})
+
 app.post("/upload", upload.single("file"), async (req, res) => {
   try {
     if (!req.file) return res.status(400).json({ message: "No file uploaded" });
